@@ -4,7 +4,7 @@ module.exports = (rules) => {
   let fields = procesor(rules.fields)
   let wrapper = `
     <div class='${rules.className}' id='${rules.id}'>
-      <form method='${rules.formMethod}' action='${rules.formAction}' class='col-md-10 col-md-offset-1'>
+      <form method='${rules.formMethod}' action='${rules.formAction}' class='col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1'>
         ${fields.map((field) => {
           return field
         }).join('')}
