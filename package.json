@@ -1,0 +1,10 @@
+{
+  "name": "wy-form",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@wyracocha/wy-env": "^1.0.1",
+    "joi": "^13.1.1"
+  }
+}
