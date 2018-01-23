@@ -11,7 +11,7 @@ const inputText = (fieldItem) => {
 const buttonSubmit = (fieldItem) => {
   let html = `
     <div id='${fieldItem.id || ''}' class='${fieldItem.className || '' }'>
-      <button type='submit' name='${fieldItem.fieldName}'/>
+      <button class='btn btn-${fieldItem.buttonLevel}' type='submit' name='${fieldItem.fieldName}'>${fieldItem.textValue}</button>
     </div>
   `
   return html.trim()
