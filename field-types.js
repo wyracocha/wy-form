@@ -39,6 +39,15 @@ const inputDateTimePicket = (fieldItem) => {
   `
   return html.trim()
 }
+const inputImage = (fieldItem) => {
+  let html = `
+    <div class='${fieldItem.className || '' }'>
+      ${fieldItem.labelHtml ? fieldItem.labelHtml : '' }
+      <input id='${fieldItem.id || ''}' class='${fieldItem.fieldClass}' ${(fieldItem.required && fieldItem.required === true) ? 'required': '' } type='email' name='${fieldItem.fieldName || ''}'>
+    </div>
+  `
+  return html.trim()
+}
 module.exports = (fieldList) => {
   let  fields = fieldList.map((fieldItem) => {
     switch (fieldItem.fieldType) {
