@@ -48,9 +48,50 @@ const inputImage = (fieldItem) => {
   `
   return html.trim()
 }
+const inputRadio = (fieldItem) => {
+  let html = `
+  <div class='${fieldItem.className || '' }'>
+    ${fieldItem.labelHtml ? fieldItem.labelHtml : '' }
+    <div>
+    ${fieldItem.items.map((e,i) => {
+      var checked = i == 0 ? 'checked' : void(0)
+      return '<label class="radio-inline"><input '+checked+' type="radio" name="'+fieldItem.fieldName+ '" value="'+e.value+'">'+e.text+'</label>'
+    }).join('')}
+    </div>
+  </div>
+  `
+  return html.trim()
+}
+const Select = (fieldItem) => {
+  let html = `
+  <div class='${fieldItem.className || '' }'>
+    ${fieldItem.labelHtml ? fieldItem.labelHtml : '' }
+    <select name='${fieldItem.fieldName}' class='${fieldItem.fieldClass || '' }'>
+    ${fieldItem.items.map(e => {
+      return '<option value="'+e.value+'">'+e.text+'</option>'
+    }).join('')}
+    </select>
+  </div>
+  `
+  return html.trim()
+}
+const inputTag = (fieldItem) => {
+  let html = `
+  <div class='${fieldItem.className || '' }'>
+    <div>
+      ${fieldItem.labelHtml ? fieldItem.labelHtml : '' }
+    </div>
+    <input style='' data-role='tagsinput' id='${fieldItem.id || ''}' class='${fieldItem.fieldClass}' ${(fieldItem.required && fieldItem.required === true) ? 'required': '' } type='text' name='${fieldItem.fieldName || ''}'>
+  </div>
+  `
+  return html.trim()
+}
 module.exports = (fieldList) => {
   let  fields = fieldList.map((fieldItem) => {
     switch (fieldItem.fieldType) {
+      case 'inputTag':
+        return inputTag(fieldItem)
+        break;
       case 'inputText':
         return inputText(fieldItem)
         break;
@@ -59,6 +100,12 @@ module.exports = (fieldList) => {
         break;
       case 'inputDateTimePicket':
         return inputDateTimePicket(fieldItem)
+        break;
+      case 'inputRadio':
+        return inputRadio(fieldItem)
+        break;
+      case 'Select':
+        return Select(fieldItem)
         break;
       default:
         return inputText(fieldItem)
