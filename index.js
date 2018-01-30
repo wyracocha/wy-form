@@ -16,7 +16,7 @@ module.exports = (rules) => {
             ${fields.map((field) => {
               return field
             }).join('')}
-            <p class='message'>${rules.message ||}</p>
+            <p class='message'>${rules.message || ''}</p>
           </form>
         </div>
       </div>
